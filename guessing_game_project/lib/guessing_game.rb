@@ -1,14 +1,13 @@
 class GuessingGame
+
+    attr_reader :num_attempts
+
     def initialize(min, max)   
         @min = min
         @max = max
         @secret_num = rand(min...max+1)  #random num b/w min and max inclusive
         @num_attempts = 0
         @game_over = false  
-    end
-
-    def num_attempts
-        @num_attempts
     end
 
     def game_over?
