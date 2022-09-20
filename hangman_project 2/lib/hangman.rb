@@ -7,15 +7,36 @@ class Hangman
     end
   
     def initialize
-      @secret_word = Hangman.random_word #can't use self b/c self refers to instance
-      @guess_word = Array.new(@secret_word.length, "_")
+      @secret_word = Hangman.random_word #string #can't use self b/c self refers to instance
+      @guess_word = Array.new(@secret_word.length, "_") #array
       @attempted_chars = []
       @remaining_incorrect_guesses = 5
     end
 
     def already_attempted?(char)
+      return true if @attempted_chars.include?(char)
+      false
     end
     
+    def get_matching_indices(ele)
+      arr = []
+      @secret_word.each_char.with_index do |char, idx|
+        if char == ele
+          arr << idx
+        end
+      end
+      arr
+    end
+
+    def fill_indices(char, arr)
+      arr.each do |i|
+        @guess_word[i] = char
+      end
+    end
+
+    
+
+
 
   
 
