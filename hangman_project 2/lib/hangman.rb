@@ -34,12 +34,25 @@ class Hangman
       end
     end
 
+    def try_guess(char)
+      arr_matching_indices = get_matching_indices(char)
+      if arr_matching_indices.empty?
+        @remaining_incorrect_guesses -= 1
+      end
+      
+      fill_indices(char, arr_matching_indices)
+
+      if already_attempted?(char)
+        print 'that has already been attempted'
+        return false
+      else
+        @attempted_chars << char
+        return true
+      end
+      
+
+    end
+
     
-
-
-
-  
-
-
 
 end
