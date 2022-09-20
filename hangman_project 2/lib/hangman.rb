@@ -58,7 +58,7 @@ class Hangman
 
     def win?
       if @guess_word.join("") == @secret_word #cant compare string and array so need to join array or split string to compare
-        print 'WIN'
+        puts 'WIN'
         return true
       end
       
@@ -67,7 +67,7 @@ class Hangman
 
     def lose?
       if @remaining_incorrect_guesses == 0
-        print 'LOSE'
+        puts 'LOSE'
         return true
       end
 
