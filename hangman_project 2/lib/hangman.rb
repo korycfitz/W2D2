@@ -39,7 +39,7 @@ class Hangman
       if arr_matching_indices.empty?
         @remaining_incorrect_guesses -= 1
       end
-      
+
       fill_indices(char, arr_matching_indices)
 
       if already_attempted?(char)
@@ -49,10 +49,38 @@ class Hangman
         @attempted_chars << char
         return true
       end
-      
-
     end
 
-    
+    def ask_user_for_guess
+      print 'Enter a char:'
+      try_guess(gets.chomp)
+    end
+
+    def win?
+      if @guess_word.join("") == @secret_word #cant compare string and array so need to join array or split string to compare
+        print 'WIN'
+        return true
+      end
+      
+      false
+    end
+
+    def lose?
+      if @remaining_incorrect_guesses == 0
+        print 'LOSE'
+        return true
+      end
+
+      false
+    end
+
+    def game_over?
+      if win? || lose?
+        print @secret_word
+        return true
+      end
+
+      false
+    end
 
 end
