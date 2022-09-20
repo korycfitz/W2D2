@@ -30,6 +30,8 @@ class GuessingGame
     end
 
     def ask_user
+        print 'enter a number'
+        check_num(gets.chomp.to_i)
     end
 
 
